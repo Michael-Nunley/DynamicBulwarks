@@ -13,6 +13,12 @@ HOSTILE_LEVEL_1 = List_Bandits;  // Wave 0 >
 HOSTILE_LEVEL_2 = List_OPFOR;    // Wave 5 >
 HOSTILE_LEVEL_3 = List_Viper;    // Wave 10 >
 
+
+//HOSTILE_LEVEL_0 = List_Tier0;    // Wave 0 >
+//HOSTILE_LEVEL_1 = List_Tier1;    // Wave 5 >
+//HOSTILE_LEVEL_2 = List_Tier2;    // Wave 10 >
+//HOSTILE_LEVEL_3 = List_Tier3;    // Wave 15 >
+
 HOSTILE_MULTIPLIER = ("HOSTILE_MULTIPLIER" call BIS_fnc_getParamValue);  // How many hostiles per wave (waveCount x HOSTILE_MULTIPLIER)
 HOSTILE_TEAM_MULTIPLIER = ("HOSTILE_TEAM_MULTIPLIER" call BIS_fnc_getParamValue) / 100;   // How many extra units are added per player
 PISTOL_HOSTILES = ("PISTOL_HOSTILES" call BIS_fnc_getParamValue);  //What wave enemies stop only using pistols
@@ -34,9 +40,12 @@ RESPAWN_TICKETS = ("RESPAWN_TICKETS" call BIS_fnc_getParamValue);
 
 /* Loot Blacklist */
 LOOT_BLACKLIST = [
-    "example_item1",
-    "example_item2",
-    "example_item3"
+    "CUP_item_Money",
+    "CUP_item_item_Money",
+    "Land_Money_F",
+    "EvMoney",
+    "CUP_item_Moscow_Bombing_File",
+    "CUP_item_item_Moscow_Bombing_File"
 ];
 
 /* Loot Spawn */
@@ -63,6 +72,7 @@ SCORE_RANDOMBOX = 950;  // Cost to spin the box
 /* Comment out or delete the below support items to prevent the player from buying them */
 
 BULWARK_SUPPORTITEMS = [
+    [5,    "test",             "v44xblackfish"],
     [800,  "Recon UAV",             "reconUAV"],
     [1685, "Emergency Teleport",   "telePlode"],
     [1950, "Paratroopers",          "paraDrop"],
@@ -78,30 +88,34 @@ BULWARK_SUPPORTITEMS = [
 
 /* Radius prevents hostiles walking through objects and triggers Zombies to attack the object */
 
-/*  Price - Display Name - Class Name - Rotation When Bought - Object Radius (meters) *prevents AI glitching through object and triggers suicide bombers*/
+/*  Price -Display Name -                    Class Name -                      Rotation When Bought -    Object Radius (meters) *prevents AI glitching through object and triggers suicide bombers*/
 BULWARK_BUILDITEMS = [
-    [25,   "Long Plank (8m)",      "Land_Plank_01_8m_F",                0,   4],
-    [50,   "Junk Barricade",       "Land_Barricade_01_4m_F",            0, 1.5],
-    [75,   "Small Ramp (1m)",      "Land_Obstacle_Ramp_F",            180, 1.5],
-    [85,   "Flat Triangle (1m)",   "Land_DomeDebris_01_hex_green_F",  180, 1.5],
-    [100,  "Short Sandbag Wall",   "Land_SandbagBarricade_01_half_F",   0, 1.5],
-    [150,  "Sandbag Barricade",    "Land_SandbagBarricade_01_hole_F",   0, 1.5],
-    [250,  "Tall Concrete Wall",   "Land_Mil_WallBig_4m_F",             0,   2],
-    [250,  "Portable Light",       "Land_PortableLight_double_F",     180,   1],
-    [400,  "Large Ramp",           "Land_VR_Slope_01_F",                0,   4],
-    [500,  "H Barrier",            "Land_HBarrier_3_F",                 0,   2],
-    [750,  "Ladder",               "Land_PierLadder_F",                 0,   1],
-    [800,  "Storage box small",    "Box_NATO_Support_F",                0,   1],
-    [950,  "Stairs",               "Land_GH_Stairs_F",                180,   4],
-    [1000, "Hallogen Lamp",        "Land_LampHalogen_F",               90,   1],
-    [1000, "Double H Barrier",     "Land_HBarrierWall4_F",              0,   4],
-    [1000, "Concrete Platform",    "BlockConcrete_F",                   0, 3.5],
-    [1200, "Storage box large",    "Box_NATO_AmmoVeh_F",                0,   1],
-    [2500, "Machine Gun",          "B_HMG_01_F",                        0,   1],
-    [2500, "Machine Gun (raised)", "B_HMG_01_high_F",                   0,   1],
-    [3000, "Small Bunker",         "Land_BagBunker_Small_F",          180,   3],
-    [3800, "Large Platform",       "Land_Pier_addon",                   0,   8],
-    [5000, "Guard Tower",          "Land_Cargo_Patrol_V3_F",          180,   0]
+    [25,      "Long Plank (8m)",             "Land_Plank_01_8m_F",                0,                      4],
+    [50,      "Wood Ramp",                   "FootBridge_30_ACR",                 0,                      4],
+    [50,      "Junk Barricade",              "Land_Barricade_01_4m_F",            0,                    1.5],
+    [50,      "Small Ramp (1m)",             "Land_Obstacle_Ramp_F",            180,                    1.5],
+    [75,      "Czech Hedgehog",              "Land_CzechHedgehog_01_new_F",      45,                      3],
+    [100,     "Short Sandbag Wall",          "Land_SandbagBarricade_01_half_F",   0,                    1.5],
+    [150,     "Sandbag Barricade Hole",      "Land_SandbagBarricade_01_hole_F",   0,                    1.5],
+    [150,     "Sandbag Barricade Wall",      "Land_SandbagBarricade_01_F",        0,                    1.5],
+    [250,     "Tall Concrete Wall",          "Land_Mil_WallBig_4m_battered_F",    0,                      3],
+    [250,     "Portable Light",              "Land_PortableLight_double_F",     180,                      1],
+    [400,     "Explosive Barrel",            "plp_ct_ServiceBarrelFlamm",         0,                      1],
+    [650,     "H-Barrier (5-blocks)",        "Land_HBarrier_5_F",                 0,                      3],
+    [750,     "Ladder",                      "Land_PierLadder_F",                 0,                      1],
+    [800,     "Storage box small",           "Box_NATO_Support_F",                0,                      1],
+    [950,     "Stairs",                      "Land_GH_Stairs_F",                180,                      4],
+    [1000,    "Hallogen Lamp",               "Land_LampHalogen_F",               90,                      1],
+    [1000,    "Double H Barrier",            "Land_HBarrierWall4_F",              0,                      4],
+    [1000,    "Concrete Platform",           "BlockConcrete_F",                   0,                      8],
+    [1000,    "Concrete Ramp",               "Land_RampConcrete_F",               0,                      8],
+    [1200,    "Storage box large",           "Box_NATO_AmmoVeh_F",                0,                      1],
+    [2500,    "DShKM",                       "rhsgref_ins_DSHKM",                 0,                      1],
+    [3000,    "Small Bunker",                "Land_BagBunker_Small_F",          180,                      3],
+    [3500,    "Static Machine Gun (raised)", "B_HMG_01_high_F",                   0,                      1],
+    [5000,    "Patrol Tower",                "Land_Cargo_Patrol_V3_F",          180,                      0],
+    [5000,    "H-Barrier Watchtower",        "Land_HBarrierTower_F",            180,                      5],
+    [10000,   "Cargo Tower",                 "Land_Cargo_Tower_V2_F",           180,                      0]
 ];
 
 /* Time of Day*/
