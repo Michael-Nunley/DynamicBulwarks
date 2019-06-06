@@ -75,6 +75,17 @@ class droneControl
     removeAfterExpressionCall = 1;
 };
 
+class v44xblackfish
+{
+    text = "V-44 X Blackfish (Armed)";
+    submenu = "";
+    expression = "[_this select 0, _this select 1, 'v44xblackfish'] remoteExec ['killPoints_fnc_support', 2];";
+    icon = "\a3\Ui_f\data\GUI\Cfg\CommunicationMenu\cas_ca.paa";
+    cursor = "\a3\Ui_f\data\IGUI\Cfg\Cursors\iconCursorSupport_ca.paa";
+    enable = "1";
+    removeAfterExpressionCall = 1;
+};
+
 class mineField
 {
     text = "Mine Field";

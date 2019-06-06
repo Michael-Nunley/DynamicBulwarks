@@ -11,6 +11,7 @@ class supports
         class armaKart {};
         class mindConGas {};
         class droneControl {};
+        class v44xblackfish {};
         class mineField {};
         class telePlode{};
     };
