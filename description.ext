@@ -3,7 +3,7 @@ onLoadIntro = "Defend yourself";
 onLoadName = "dynamicBulwarks";
 briefingName = "dynamicBulwarks";
 overviewText = "Survive by scavenging equipment, in a randomly selected city, against ever increasing waves of hostiles.";
-author = "Hilltop & omNomios";
+author = "Hilltop & omNomios, modification: Zheimtczar";
 overviewPicture = "preview.paa";
 
 loadScreen = "preview.paa";
@@ -147,6 +147,13 @@ class CfgSounds
 	{
 		name = "Com Noise";
 		sound[] = {"\sound\comNoise.ogg", 10, 1};
+		titles[] = {0,""};
+	};
+
+	class UAVSound
+	{
+		name = "uav support";
+		sound[] = {"\sound\MW_Killstreak_Radar.ogg", 10, 1};
 		titles[] = {0,""};
 	};
 
@@ -307,8 +314,8 @@ class Params
 	class LOOT_HOUSE_DENSITY
 	{
 		title = "Minimum number of buildings in Bulwark radius";
-		values[] = {5, 10, 15, 20, 30};
-		texts[] = {"5","10","15","20","30"};
+		values[] = {2, 5, 10, 15, 20, 30};
+		texts[] = {"2","5","10","15","20","30"};
 		default = 15;
 	};
 
@@ -380,7 +387,7 @@ class Params
 	{
 		title = "Find Satellite Dish to Unlock Supports";
 		values[] = {0, 1};
-		texts[] = {"Yes, find the Satellite Dish to unlock the Support Menu", "No, Supports are available from the begining of the mission"};
+		texts[] = {"Yes, find the Satellite Dish to unlock the Support Menu", "No, Supports are available from the beginning of the mission"};
 		default = 1;
 	};
 
